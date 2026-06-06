@@ -59,7 +59,8 @@ az version
 ```bash id="azlogin"
 az login
 ```
-
+---
+---
 👉 Browser opens for authentication, type the code then type your username and password
 <br>
 👉 Type 1 and Enter when you see the message "Select a subscription and tenant (Type a number or Enter for no changes): 1"
