@@ -1,11 +1,17 @@
 # Day 1: **Introduction to Azure (Day 1)**
-Includes: Cloud Computing, Azure vs AWS, Portal overview, Free account
+
+### Topic will cover in today's class
+ * What is Cloud Computing
+ * Azure vs AWS
+ * Azure Portal Overview (Hands-on)
+ * Create Azure Free Account (Hands-on)
+ * Azure CLI
 
 ---
 
-# 🎯 🔥 1. What is Cloud Computing (Simple + Real Meaning)
+# 1. What is Cloud Computing (Simple + Real Meaning)
 
-## 🧠 Concept
+## Concept
 
 👉 Cloud computing = using servers over the internet instead of your own hardware
 
@@ -20,7 +26,7 @@ You:
 
 ---
 
-## 📦 Types of Cloud
+## Types of Cloud
 
 | Type | Example           |
 | ---- | ----------------- |
@@ -30,17 +36,17 @@ You:
 
 ---
 
-## 🎯 Summary
+## Summary
 
 > “Cloud computing means you can launch a server in minutes without buying any hardware.”
 
 ---
 
-# ⚔️ 🔥 2. Azure vs AWS (Important for Your Audience)
+# 2. Azure vs AWS (Very Important)
 
 ---
 
-## 🧠 Service Mapping (VERY IMPORTANT)
+## Service Mapping (VERY IMPORTANT)
 
 | AWS | Azure               |
 | --- | ------------------- |
@@ -51,20 +57,20 @@ You:
 
 ---
 
-## 🎯 Key Difference
+## Key Difference
 
 * AWS → More mature
 * Azure → Strong with Microsoft ecosystem
 
 ---
 
-## 🎯 Summary
+## Summary
 
 > “If you already know AWS, Azure will feel very similar — just different naming.”
 
 ---
 
-# 💻 🧪 3. Azure Portal Overview (Hands-on)
+# 3. Azure Portal Overview (Hands-on)
 
 👉 Open:
 **Microsoft Azure Portal**
@@ -113,20 +119,20 @@ Example:
 
 ---
 
-## 🎯 Summary
+## Summary
 
 > “Azure Portal is your control center — everything you create in Azure will be managed from here.”
 
 ---
 
-# 🆓 🔥 4. Create Azure Free Account (Hands-on)
+# 4. Create Azure Free Account (Hands-on)
 
 👉 Go to:
 **Microsoft Azure**
 
 ---
 
-## 🧪 Steps
+## Steps
 
 1. Click **Start Free**
 2. Sign in with Microsoft account
@@ -137,14 +143,14 @@ Example:
 
 ---
 
-## 🎁 What You Get
+## What You Get
 
  - ✔ Free credits (for first 30 days)
  - ✔ Free tier services (limited usage)
 
 ---
 
-## 🎯 Summary
+## Summary
 
 > “Azure requires a card for verification, but you won’t be charged if you stay within free limits.”
 
@@ -158,7 +164,7 @@ Example:
 
 ---
 
-# 🚀 Azure CLI (Quick Demo)
+# Azure CLI (Quick Demo)
 
 ```bash
 az login
@@ -169,13 +175,14 @@ az account show
 
 ---
 
-# 🎬 Final Summary
+# Final Summary
 
-👉 In this video you learned:
+👉 In this video we learned:
 
 * What is cloud computing
 * Azure vs AWS mapping
 * Azure Portal navigation
 * How to create free account
+* Azure cli
 
 ---
