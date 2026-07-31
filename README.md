@@ -1,8 +1,6 @@
-# Azure in 30 Days — Complete Course Roadmap
+# **Azure in 30 Days — Learn Microsoft Azure from Zero to Cloud & DevOps**
 
-### Course Name
-**Azure in 30 Days — Learn Microsoft Azure from Zero to Cloud & DevOps**
-
+# Course Outline
 ---
 
 # 📅 PHASE 1 — Azure Fundamentals
