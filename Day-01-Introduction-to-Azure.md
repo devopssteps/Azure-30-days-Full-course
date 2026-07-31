@@ -164,7 +164,7 @@ Example:
 
 ---
 
-# Azure CLI (Quick Demo)
+# Azure CLI
 
 ```bash
 az login
