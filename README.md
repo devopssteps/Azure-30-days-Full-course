@@ -1,6 +1,24 @@
-# **Azure in 30 Days — Learn Microsoft Azure from Zero to Cloud & DevOps**
+# **Azure in 30 Days — Learn Azure from Zero to Cloud & DevOps**
 
-# Course Outline
+**Azure Fundamentals → Networking → Storage → Security → Compute → Docker → AKS → Azure DevOps → CI/CD → Terraform → Monitoring → Real-World Project**
+
+---
+
+### Who the course is for 
+
+* Complete beginners
+* AWS professionals
+* DevOps engineers
+* Cloud engineers
+* Linux administrators
+* Developers
+* IT professionals
+
+
+# 30-Day Course Roadmap (Course Outline)
+
+Today is the **Day 0** class.
+
 ---
 
 # 📅 PHASE 1 — Azure Fundamentals
