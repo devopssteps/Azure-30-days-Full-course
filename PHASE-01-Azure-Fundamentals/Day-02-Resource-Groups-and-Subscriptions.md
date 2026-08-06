@@ -271,7 +271,7 @@ We will cover **Terraform later in the course**.
 
 ---
 
-# 🧪 8. HANDS-ON LAB — Create Resource Group Using Portal
+# 8. HANDS-ON LAB — Create Resource Group Using Portal
 
 Now start the practical demonstration.
 
@@ -309,7 +309,7 @@ Then:
 
 ---
 
-# 🧪 9. Create Resource Group Using Azure CLI
+# 9. Create Resource Group Using Azure CLI
 
 Open **Azure Cloud Shell** or your local terminal.
 
@@ -354,7 +354,7 @@ az group list --output table
 
 ---
 
-# 🧪 10. Create an Azure Resource Inside Resource Group
+# 10. Create an Azure Resource Inside Resource Group
 
 Now create a simple Storage Account.
 
@@ -404,7 +404,7 @@ This gives your viewers a real understanding of the relationship between:
 
 ---
 
-# 🧪 11. Delete Resources
+# 11. Delete Resources
 
 Now demonstrate Azure resource lifecycle.
 
@@ -431,7 +431,7 @@ az group delete \
 
 ---
 
-# 💰 12. Azure Cost Management
+# 12. Azure Cost Management
 
 Now introduce cost management.
 
