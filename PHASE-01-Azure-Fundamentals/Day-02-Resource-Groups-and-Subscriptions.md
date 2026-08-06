@@ -443,7 +443,7 @@ Go to:
 * Budgets: The financial limits you set in Azure to plan and track your spending.
 * Cost alerts: The automated notifications triggered when your spending hits a specific threshold.
 * Billing scope: The organizational boundary where costs are collected and invoiced.
-* Spending monitoring: The automated notifications triggered when your spending hits a specific threshold.
+
 
 **Cost Management → Cost Analysis**
 
