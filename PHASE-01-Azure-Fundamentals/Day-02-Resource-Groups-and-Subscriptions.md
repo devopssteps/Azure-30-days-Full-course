@@ -1,5 +1,7 @@
 # Day 2: Azure Resource Groups & Subscriptions
 
+![Resource and Subscription](https://github.com/devopssteps/Azure-30-days-Full-course/blob/main/PHASE-01-Azure-Fundamentals/azure_hierarchy_structure.jpg) 
+
 # 1. Real-World Example
 
 ### 🏢 Think of Azure like a large company
