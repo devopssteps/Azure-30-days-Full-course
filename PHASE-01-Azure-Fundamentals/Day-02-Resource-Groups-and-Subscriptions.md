@@ -21,7 +21,7 @@ Resource Group
        ├── Database
        ├── VNet
        └── Public IP
-
+```
 ---
 
 # 2. What Is an Azure Resource?
