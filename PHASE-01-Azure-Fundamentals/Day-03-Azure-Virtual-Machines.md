@@ -5,6 +5,7 @@
 # 1. What is Azure VM?
 
 👉 A **Virtual Machine (VM)** is a cloud server you can create in minutes
+<br>
 👉 Same concept as AWS EC2
 
 💡 You control:
