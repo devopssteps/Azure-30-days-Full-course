@@ -277,11 +277,7 @@ VM
 
 # HANDS-ON DEMO — Secure an Azure VM Using NSG
 
-## Step 1 — Use the VM from Day 3
-
-Use your existing VM if possible.
-
-Show:
+## Step 1 — Create a VM
 
 ```text
 Azure Portal
@@ -355,7 +351,7 @@ Port: 22
 Protocol: TCP
 ```
 
-Instead of allowing SSH from everywhere, explain the concept of restricting the source to a trusted IP range when appropriate.
+Instead of allowing SSH from everywhere, we should allow only trusted IP range like our office or home pc.
 
 For example:
 
@@ -369,8 +365,6 @@ rather than:
 ```text
 Any
 ```
-
-This is a good security lesson.
 
 ---
 
@@ -437,13 +431,6 @@ you can manage the VM without relying on a direct public IP connection.
                 ▼
               Private IP
 
-Browser
-   │
-   ▼
-Azure Bastion
-   │
-   ▼
-Private VM Access
 ```
 
 > **"আজ আমরা Azure Networking-এর একটি গুরুত্বপূর্ণ অংশ শিখলাম। আমরা NSG ব্যবহার করে inbound এবং outbound traffic control করলাম, ASG সম্পর্কে জানলাম, public এবং private access বুঝলাম এবং Azure Bastion ব্যবহার করে কীভাবে secure VM management করা যায় সেটাও দেখলাম।"**
