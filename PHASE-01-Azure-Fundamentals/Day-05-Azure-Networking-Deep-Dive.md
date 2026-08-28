@@ -144,7 +144,19 @@ VNet
 
 # 6. Application Security Groups (ASG)
 
-problem ASG solves.
+An Azure Application Security Group (ASG) is a logical object used to group virtual machines (VMs) based on their application function or role, rather than their IP addresses.
+Instead of writing Network Security Group (NSG) rules that explicitly list individual IP addresses, you assign VMs to an ASG and then use that ASG as the source or destination in your NSG rules.
+## Why ASGs Matter (The Problem They Solve)
+Without ASGs, if you have a web application with three web servers, your database security rule in an NSG would look like this:
+
+* Allow Traffic from: 10.0.0.4, 10.0.0.5, 10.0.0.6 to Database
+
+If you scale up your application and add a fourth web server (10.0.0.7), you have to manually update the NSG rule to include the new IP address. This is tedious and prone to human error.
+With ASGs, you create an ASG called AsgWebServers. You attach all web VMs to it. Your NSG rule becomes:
+
+* Allow Traffic from: AsgWebServers to Database
+
+When you add a new web server, you simply label it as part of AsgWebServers. The security rule automatically applies to it without you touching the NSG.
 
 Suppose you have:
 
