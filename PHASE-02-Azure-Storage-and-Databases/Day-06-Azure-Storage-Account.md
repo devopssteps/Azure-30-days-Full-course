@@ -1,3 +1,5 @@
+# Day-06: Azure Storage Account
+---
 # 1. What is Azure Storage?
 
 Azure Storage is Microsoft's cloud storage service for storing structured and unstructured data securely and at scale.
