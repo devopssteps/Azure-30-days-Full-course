@@ -222,8 +222,6 @@ Choose:
 * Storage Account Name
 * Region
 
-Explain the naming rules.
-
 ---
 
 ## Step 3
@@ -244,8 +242,6 @@ Choose **Standard** for the demo.
 Choose Redundancy
 
 Open the dropdown.
-
-Explain every option before selecting one.
 
 Choose **LRS** first.
 
@@ -290,7 +286,7 @@ Upload:
 * image.jpg
 * pdf.pdf
 
-Explain that Blob Storage is inside the Storage Account.
+Blob Storage is inside the Storage Account.
 
 ---
 
@@ -305,8 +301,6 @@ Hot
 ↓
 
 Cool
-
-Explain when you would use each.
 
 ---
 
@@ -377,7 +371,7 @@ az storage account delete \
   --yes
 ```
 
-**Tip:** Remind viewers that the storage account name must be **globally unique**, use only lowercase letters and numbers, and typically be between **3 and 24 characters**.
+**Tip:** Remind the storage account name must be **globally unique**, use only lowercase letters and numbers, and typically be between **3 and 24 characters**.
 
 ---
 
