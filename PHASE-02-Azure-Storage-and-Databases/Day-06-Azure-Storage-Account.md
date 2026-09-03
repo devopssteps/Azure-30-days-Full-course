@@ -54,10 +54,27 @@ Storage Account
 └── Managed Disks
 ```
 
-Blob Storage will be covered in the next lesson.
-
+Blob Storage details will be covered in the next lesson.
 ---
+### Azure Blob Storage: 
+Storage for massive amounts of unstructured data (data that doesn't fit into a rigid database). "Blob" stands for Binary Large Object.<br>
+Best used for: Storing images, videos, audio, documents, backups, and log files.
 
+### Azure Files:
+Fully managed cloud file shares that can be accessed using standard network protocols (like SMB and NFS).<br>
+Best used for: Migrating traditional on-premises file servers to the cloud without changing software code. Multiple virtual machines or computers can connect to it at the same time.
+
+### Azure Queue Storage:
+A messaging store used to pass and queue small messages safely between different parts of an application.<br>
+Asynchronous communication and workload balancing. For example, if millions of users upload photos at once, a queue safely stores the "process this photo" tasks so your application doesn't crash.
+
+### Azure Table Storage:
+A NoSQL datastore that saves structured, non-relational key-value data.<br>
+Best used for: Storing massive amounts of structured, simple data (like user profiles, address books, or device metadata) that do not require complex relational mapping or foreign keys. It is fast and highly cost-effective.
+
+### Azure Managed Disks:
+Virtual hard drives that Microsoft manages for you, specifically designed to be attached to Azure Virtual Machines (VMs).<br>
+Best used for: The actual operating system (OS) and data drives for cloud servers. You just pick the size and performance tier (HDD or SSD), and Azure handles the underlying hardware setup.
 # 4. Storage Performance Tiers
 
 ### Standard
