@@ -42,7 +42,7 @@ Storage Account can contain multiple storage services.
 
 ---
 
-# 3. Storage Services
+# 3. Storage Types
 
 ```text
 Storage Account
