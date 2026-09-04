@@ -41,6 +41,7 @@ Blob   Files      Queues
 Storage Account can contain multiple storage services.
 
 ---
+## Data types
 ![Data-types](https://github.com/devopssteps/Azure-30-days-Full-course/blob/main/PHASE-02-Azure-Storage-and-Databases/data-types-image.png) 
 ---
 
