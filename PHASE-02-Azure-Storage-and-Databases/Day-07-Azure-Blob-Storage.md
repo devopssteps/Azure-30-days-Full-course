@@ -337,8 +337,6 @@ Open the URL in your browser.
 
 Show the live website.
 
-This is the "wow moment" of the video.
-
 ---
 
 # Step 5
