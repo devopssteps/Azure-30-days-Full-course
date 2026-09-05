@@ -243,6 +243,7 @@ Choose:
 * Resource Group
 * Storage Account Name
 * Region
+* Primary service: choose "Azure Blob storage or Azure Data Lack Storage"
 
 ---
 
