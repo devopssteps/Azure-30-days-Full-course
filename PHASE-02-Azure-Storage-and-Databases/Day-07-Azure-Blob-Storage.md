@@ -40,24 +40,13 @@ Blob
 Example:
 
 ```text
-Storage Account
-
-mywebsite
-
+Storage Account (mywebsite)
      │
-
-Container
-
-images
-
+Container (images)
      │
-
 Blob
-
 logo.png
-
 banner.jpg
-
 index.html
 ```
 
