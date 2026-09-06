@@ -315,8 +315,8 @@ Blob Storage is inside the Storage Account.
 
 ## Step 8
 
-Change Access Tier
-Select the object > click "change tier" at the top menu > Now select cool
+Change Access Tier<br>
+Select the object > click "change tier" at the top menu > Now select cool <br>
 We can see:
 
 Hot
