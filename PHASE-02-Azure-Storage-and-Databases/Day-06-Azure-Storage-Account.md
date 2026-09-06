@@ -331,17 +331,9 @@ Cool
 
 Monitor Storage
 
-Open:
-
-Monitoring
-
-↓
-
-Metrics
-
-Show:
-
-* Transactions
+Click the storage account > Click "Monitoring" tab
+<br>
+* Monitoring
 * Capacity
 * Availability
 
