@@ -401,7 +401,10 @@ az storage blob upload \
   --file index.html \
   --auth-mode login
 ```
-
+Delete the container - if we enable static website from browser we are not able to delete the container we need to delete it from cli
+```bash
+az storage container delete --name "\$web" --account-name <YourStorageAccountName> --auth-mode login
+```
 List blobs:
 
 ```bash
