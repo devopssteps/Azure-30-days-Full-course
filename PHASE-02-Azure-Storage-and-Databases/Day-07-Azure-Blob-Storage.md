@@ -272,18 +272,25 @@ Lifecycle policies help reduce storage costs.
 
 Azure Portal
 ↓
+
 Storage Account
 ↓
+
 Capabilities
 ↓
+
 Static Website
 ↓
+
 Enable Static Website
 ↓
+
 type the file name like index.html and error.html
 ↓
+
 Click Save
 ↓
+
 Now we can see the URL of the website as follows just copy the URL and pest it in browser, But it will not show and page because we did not upload file.
 ```text
 https://your-storage-account.zXX.web.core.windows.net
