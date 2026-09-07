@@ -1,3 +1,5 @@
+# Day-08: Azure Files and Storage Security
+
 # 1. Real-world scenario
 
 > **"ধরুন আপনার কোম্পানির ১০০টি Virtual Machine আছে। প্রতিটি VM-এ আলাদা আলাদা File রাখার পরিবর্তে যদি সবাই একই Shared Folder ব্যবহার করতে পারে, তাহলে কেমন হয়? আজ আমরা Azure Files ব্যবহার করে একটি Shared File Storage তৈরি করব, Linux VM-এ Mount করব এবং Storage Access Keys ও SAS Token দিয়ে Secure Access কীভাবে করা যায় তা Hands-on Demo সহ শিখব।"**
