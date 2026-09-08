@@ -390,22 +390,6 @@ Open in windows explorer: In the Folder box, paste your path:
 Here, azureshare1 is the azure file share name
 
 ---
-# Final Architecture
-
-```
-Linux VM
-      │
-      │ SMB
-      ▼
-Azure File Share
-      │
-      ▼
-Folders
-      │
-      ▼
-Files
-
-Security
 
 Access Keys
 
