@@ -422,7 +422,7 @@ Name
 cat.jpg
 ```
 
-### 4. Download the image to WSL
+### 3. Download the image
 
 ```bash
 az storage blob download \
