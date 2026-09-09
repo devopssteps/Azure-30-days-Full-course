@@ -391,9 +391,46 @@ Here, azureshare1 is the azure file share name
 
 ---
 
-Access Keys
+# Hands on: Access Keys & SAS Token 
 
-SAS Token
+### 1. Set your variables
+
+Using your example:
+
+```bash
+export STORAGE_ACCOUNT="rajiv2026"
+export STORAGE_KEY="YOUR_STORAGE_ACCOUNT_ACCESS_KEY"
+export CONTAINER="images"
+export BLOB="cat.jpg"
+```
+
+### 2. Test access to your container
+
+```bash
+az storage blob list \
+  --account-name "$STORAGE_ACCOUNT" \
+  --account-key "$STORAGE_KEY" \
+  --container-name "$CONTAINER" \
+  --output table
+```
+
+You should get:
+
+```text
+Name
+----------------
+cat.jpg
+```
+
+### 4. Download the image to WSL
+
+```bash
+az storage blob download \
+  --account-name "$STORAGE_ACCOUNT" \
+  --account-key "$STORAGE_KEY" \
+  --container-name "$CONTAINER" \
+  --name "$BLOB" \
+  --file "./cat.jpg"
 ```
 
 ---
