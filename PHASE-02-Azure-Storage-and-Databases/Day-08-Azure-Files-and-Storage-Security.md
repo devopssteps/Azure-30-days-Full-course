@@ -90,8 +90,7 @@ SMB allows multiple users and VMs to access the same files over the network.
 
 # 6. Storage Security
 
-This is where your video becomes different from many beginner tutorials.
-
+Azure Storage Security is a built-in set of features and rules designed to protect your data from unauthorized access, leaks, and cyber threats.
 ---
 
 ## Storage Access Keys
