@@ -1,4 +1,15 @@
 # Day-08: Azure Files and Storage Security
+## Todays' video will cover the following topics
+ * Real-world scenario
+ * What is Azure Files?
+ * Azure Files Architecture
+ * What is a File Share?
+ * SMB Protocol
+ * Storage Security
+       * Storage Access Keys
+       * Shared Access Signature (SAS)
+ * Hands-on Demo
+
 
 # 1. Real-world scenario
 
