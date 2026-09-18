@@ -385,6 +385,12 @@ az storage share-rm list \
 ```
 
 ---
+Open in windows explorer: In the Folder box, paste your path: 
+```sh
+\\rajiv2026.file.core.windows.net\azureshare1
+```
+Here, azureshare1 is the azure file share name
+
 Force delete from Powershell 
 ```sh
 Remove-SmbMapping -RemotePath "\\rajiv2026.file.core.windows.net\azureshare1" -Force
@@ -393,11 +399,7 @@ Force delete from command line
 ```sh
 net use "\\rajiv2026.file.core.windows.net\azureshare1" /delete
 ```
-Open in windows explorer: In the Folder box, paste your path: 
-```sh
-\\rajiv2026.file.core.windows.net\azureshare1
-```
-Here, azureshare1 is the azure file share name
+
 
 ---
 
