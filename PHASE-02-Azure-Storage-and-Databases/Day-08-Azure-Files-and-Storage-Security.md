@@ -6,8 +6,8 @@
  * What is a File Share?
  * SMB Protocol
  * Storage Security
-       * Storage Access Keys
-       * Shared Access Signature (SAS)
+    - Storage Access Keys
+    - Shared Access Signature (SAS)
  * Hands-on Demo
 
 
