@@ -383,6 +383,13 @@ az storage share-rm list \
   --storage-account mystorageaccount12345 \
   --output table
 ```
+See the list of Container
+```sh
+az storage container list \
+  --account-name rajiv2026 \
+  --auth-mode login \
+  --output table
+```
 
 ---
 Open in windows explorer: In the Folder box, paste your path: 
