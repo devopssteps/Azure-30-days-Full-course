@@ -411,5 +411,12 @@ ZRS
 GRS
 RA-GRS
 ```
+## Key Differences Comparison Between Azure Files Vs AWS EFS
+
+| Feature | Azure Files | AWS EFS (Elastic File System) |
+|---|---|---|
+| Primary Protocols | SMB (2.1, 3.0, 3.1.1) and NFS (4.1) | NFS (v4.0 and v4.1) |
+| OS Compatibility | Windows, Linux, and macOS | Primarily Linux (Windows requires complex workarounds) |
+| On-Premises Access | Supported natively via SMB 3.0 (requires port 445 open) or Azure ExpressRoute / VPN | Supported via AWS Direct Connect or AWS Client VPN |
 
 ---
