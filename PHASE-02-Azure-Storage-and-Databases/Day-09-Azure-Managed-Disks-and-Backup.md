@@ -1,3 +1,14 @@
+# Day-09: Azure Managed Disks and Backup
+Today's video we will learn the following topics:
+ * Real disaster recovery scenario
+ * What is Azure Managed Disk?
+ * Azure Managed Disk Architecture
+ * Types of Azure Managed Disks
+ * Snapshots
+ * Azure Backup
+ *  Recovery Services Vault
+ *  Hands on Demo
+ 
 ## 1. Real disaster recovery scenario. 
 
 
