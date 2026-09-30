@@ -1,3 +1,17 @@
+# Day-07: Azure Blob Storage
+
+## Todays video we will cover the following topics
+ * What is Azure Blob Storage?
+ * Blob Storage Hierarchy
+ * What is a Container?
+ * Blob Types
+ * Upload & Download Files
+ * Public vs Private Access
+ * Blob Access Tiers
+ * Blob Lifecycle Management
+ * Hands-on Demo if all topics & deploy a static website on azure
+
+
 # 1. What is Azure Blob Storage?
 
 Azure Blob Storage is an object storage service for storing unstructured data such as:
