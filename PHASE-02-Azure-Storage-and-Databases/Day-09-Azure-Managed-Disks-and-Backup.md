@@ -399,6 +399,70 @@ az snapshot list --output table
 ```
 
 ---
+# Delete The Recovery vault service (Best way)
+
+### 1. Set your variables
+
+Replace the two values if your names differ:
+
+```bash
+VAULT="azure-backup-demo-vault"
+RG="azure-backup-demo-rg"
+VM="azure-backup-demo-vm"
+```
+
+First make sure you're logged in:
+
+```bash
+az login
+```
+
+And select the correct subscription:
+
+```bash
+az account set --subscription "<YOUR-SUBSCRIPTION-ID>"
+```
+
+### 2. Delete the VM's backup data
+
+```bash
+az backup protection disable \
+  --resource-group "$RG" \
+  --vault-name "$VAULT" \
+  --container-name "$VM" \
+  --item-name "$VM" \
+  --backup-management-type AzureIaaSVM \
+  --delete-backup-data true \
+  --yes
+```
+
+### 3. Check the vault
+
+```bash
+az backup item list \
+  --resource-group "$RG" \
+  --vault-name "$VAULT" \
+  -o table
+```
+
+### 4. Deleting the vault
+
+```bash
+az backup vault delete \
+  --resource-group "$RG" \
+  --name "$VAULT" \
+  --yes
+```
+
+** The simplest cleanup way is as follows but do not blindly delete the entire resource group** if it contains resources you want to keep.
+
+```bash
+az group delete \
+  --name "$RG" \
+  --yes \
+  --no-wait
+```
+---
 
 # Final Architecture
 
