@@ -60,6 +60,19 @@ while the current name is:
                   Azure Resources
 ```
 ---
+# Azure Tenant
+An Azure Tenant is a single, dedicated, and isolated instance of Microsoft Entra ID (formerly Azure AD) that represents a specific organization.
+
+## How It Works
+* Your Private Cloud Space: When your organization signs up for a Microsoft cloud service (like Azure or Microsoft 365), Microsoft creates a dedicated tenant for you.
+* Security Boundary: It acts as a secure container. Everything inside it—users, passwords, permissions, and connected applications—is completely isolated from every other company's tenant.
+* The Analogy: Think of an Azure Tenant like an apartment in an apartment building. Microsoft owns the whole building, but your tenant is your specific apartment. Only people with your key (credentials) can get inside, and your neighbors cannot see or touch anything in your space.
+
+## Key Things a Tenant Houses
+* User Identities: All the employee accounts, guest accounts, and security groups for your company.
+* Subscriptions: The billing accounts used to pay for Azure resources like Virtual Machines or databases.
+
+---
 
 # Hands on MFA demo
 We will create a user and login to that user and after put the username and password it will ask for the code so we need to put the code and we are using Authy for our MFA and URL is : https://www.authy.com/
