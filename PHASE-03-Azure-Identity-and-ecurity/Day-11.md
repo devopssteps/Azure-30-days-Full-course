@@ -64,7 +64,9 @@ while the current name is:
 # Hands on MFA demo
 We will create a user and login to that user and after put the username and password it will ask for the code so we need to put the code and we are using Authy for our MFA and URL is : https://www.authy.com/
 
+---
 # SSO
+
 Single Sign-On (SSO) is an authentication method that allows you to log in once with a single set of credentials (username and password) to access multiple independent software systems, applications, or websites. For example we are login to google one time and now we can access youtube or google drive it will not asking the credentials again. 
 ------------------------------
 ### How It Works
