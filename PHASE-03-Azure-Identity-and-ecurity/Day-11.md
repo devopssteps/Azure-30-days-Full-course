@@ -66,8 +66,8 @@ We will create a user and login to that user and after put the username and pass
 
 ---
 # SSO
-
 Single Sign-On (SSO) is an authentication method that allows you to log in once with a single set of credentials (username and password) to access multiple independent software systems, applications, or websites. For example we are login to google one time and now we can access youtube or google drive it will not asking the credentials again. 
+
 ------------------------------
 ### How It Works
 
