@@ -4,9 +4,9 @@ In this video we learn the following topics:
  * What is Microsoft Entra ID?
  * Architecture of Microsoft Entra ID
  * What is a Tenant?
+ * Authentication vs Authorization
  * Users
  * Groups
- * Authentication vs Authorization
  * MFA — Multi-Factor Authentication
  * What is SSO?
 
@@ -60,7 +60,7 @@ while the current name is:
                   Azure Resources
 ```
 ---
-# Azure Tenant
+# 3. Azure Tenant
 An Azure Tenant is a single, dedicated, and isolated instance of Microsoft Entra ID (formerly Azure AD) that represents a specific organization.
 
 ### How It Works
@@ -73,7 +73,7 @@ An Azure Tenant is a single, dedicated, and isolated instance of Microsoft Entra
 * Subscriptions: The billing accounts used to pay for Azure resources like Virtual Machines or databases.
 
 ---
-# Users
+# 4. Users
 A user represents an identity within the Entra tenant.
 
 Example:
@@ -95,7 +95,7 @@ Users
 * Groups
 
 ---
-# Groups
+# 5. Groups
 Assign permissions individually to hundreds of users.
 
 Instead:
@@ -116,21 +116,19 @@ Users
 This makes administration easier.
 
 ---
-# Hands on MFA demo
+# 6. Hands on MFA demo
 We will create a user and login to that user and after put the username and password it will ask for the code so we need to put the code and we are using Authy for our MFA and URL is : https://www.authy.com/
 
 ---
-# SSO
+# 7. SSO
 Single Sign-On (SSO) is an authentication method that allows you to log in once with a single set of credentials (username and password) to access multiple independent software systems, applications, or websites. For example we are login to google one time and now we can access youtube or google drive and it will not asking the credentials again. 
 
-------------------------------
 ### How It Works
 
 * One Login: You enter your username and password a single time on a central login page.
 * Seamless Access: The central system verifies your identity and automatically grants you access to all your connected apps without asking you to log in again.
 * The Analogy: Think of SSO like a wristband at an amusement park. You show your ID and pay at the entrance to get the wristband. For the rest of the day, you just show that wristband to get on every ride, rather than buying a separate ticket for each one.
 
-------------------------------
 ### Why People Use It
 
 * Better Security: Users only have to remember one strong password instead of dozens of weak ones.
