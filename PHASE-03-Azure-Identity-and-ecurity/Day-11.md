@@ -63,3 +63,22 @@ while the current name is:
 
 # Hands on MFA demo
 We will create a user and login to that user and after put the username and password it will ask for the code so we need to put the code and we are using Authy for our MFA and URL is : https://www.authy.com/
+
+# SSO
+Single Sign-On (SSO) is an authentication method that allows you to log in once with a single set of credentials (username and password) to access multiple independent software systems, applications, or websites. For example we are login to google one time and now we can access youtube or google drive it will not asking the credentials again. 
+------------------------------
+### How It Works
+
+* One Login: You enter your username and password a single time on a central login page.
+* Seamless Access: The central system verifies your identity and automatically grants you access to all your connected apps without asking you to log in again.
+* The Analogy: Think of SSO like a wristband at an amusement park. You show your ID and pay at the entrance to get the wristband. For the rest of the day, you just show that wristband to get on every ride, rather than buying a separate ticket for each one.
+
+------------------------------
+### Why People Use It
+
+* Better Security: Users only have to remember one strong password instead of dozens of weak ones.
+* Time Saving: It eliminates the frustration of logging into different tools repeatedly throughout the workday.
+* Easy Offboarding: When an employee leaves a company, IT can disable their single SSO account to instantly block their access to all company apps at once.
+
+
+
