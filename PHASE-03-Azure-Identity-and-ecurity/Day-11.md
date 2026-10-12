@@ -73,7 +73,49 @@ An Azure Tenant is a single, dedicated, and isolated instance of Microsoft Entra
 * Subscriptions: The billing accounts used to pay for Azure resources like Virtual Machines or databases.
 
 ---
+# Users
+A user represents an identity within the Entra tenant.
 
+Example:
+
+```text
+Microsoft Entra Tenant
+
+Users
+│
+├── rajiv
+├── admin
+└── developer
+```
+
+* Username
+* Password
+* Account status
+* Roles
+* Groups
+
+---
+# Groups
+Assign permissions individually to hundreds of users.
+
+Instead:
+
+```text
+Users
+ │
+ ├── User 1
+ ├── User 2
+ └── User 3
+        │
+        ▼
+     Group
+        │
+        ▼
+   Permissions
+```
+This makes administration easier.
+
+---
 # Hands on MFA demo
 We will create a user and login to that user and after put the username and password it will ask for the code so we need to put the code and we are using Authy for our MFA and URL is : https://www.authy.com/
 
