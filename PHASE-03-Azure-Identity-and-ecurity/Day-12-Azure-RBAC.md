@@ -218,7 +218,27 @@ Resource Group: Production
 Rajiv can manage resources within that scope according to the role's permissions.
 
 ---
+# For creating VM, we need to give this permission 
 
+```sh
+"actions": [
+                    "Microsoft.Compute/virtualMachines/*",
+                    "Microsoft.Compute/disks/*",
+                    "Microsoft.Compute/images/read",
+                    "Microsoft.Compute/locations/*/read",
+                    "Microsoft.Network/networkInterfaces/*",
+                    "Microsoft.Network/publicIPAddresses/*",
+                    "Microsoft.Network/networkSecurityGroups/*",
+                    "Microsoft.Network/virtualNetworks/read",
+                    "Microsoft.Network/virtualNetworks/subnets/read",
+                    "Microsoft.Network/virtualNetworks/subnets/join/action",
+                    "Microsoft.Resources/deployments/*",
+                    "Microsoft.Resources/subscriptions/resourceGroups/read",
+                    "Microsoft.Storage/storageAccounts/read",
+                    "Microsoft.Resources/subscriptions/resourceGroups/write",
+                    "Microsoft.Resources/subscriptions/resourceGroups/delete"
+                ]
+```
 
 
 
