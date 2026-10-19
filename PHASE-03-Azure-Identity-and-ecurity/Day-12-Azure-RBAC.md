@@ -9,6 +9,9 @@ In todays video we will learn the following topics.
  * Contributor
  * Reader
  * Comparison table for owner vs Contributor vs Reader
+ * Sample Customized role to allow user to create a VM only
+
+
 # 1. What is Azure RBAC?
 
 **RBAC = Role-Based Access Control**
@@ -32,8 +35,53 @@ WHERE?
  ↓
 Scope
 ```
-
 This is the core concept of RBAC.
+---
+# 8. Three Core Concepts of RBAC
+simple formula: Who + What + Where = Access.
+```sh
+[ Who? ]                   [ What? ]                 [ Where? ]
+Security Principal    +   Role Definition    +           Scope           = Access Granted
+ (e.g., Jane the         (e.g., "Reader" -          (e.g., Only inside
+    Student)              can view things)         "Lab-Resource-Group")
+```
+1. Security Principal (The "Who"): An identity requesting access. This can be a single User, a Group of people, or an application (Service Principal). 
+2. Role Definition (The "What"): A collection of permissions. Azure has thousands of built-in roles, but beginners only need to know the big three:
+	* 👀 Reader: Can look, but cannot touch or change anything.
+	* 🛠️ Contributor: Can create, edit, or delete resources, but cannot grant access to others.
+	* 👑 Owner: Has full control, including the power to grant or revoke access for others. 
+3. Scope (The "Where"): The boundary where the access applies. Azure organizes resources like folders on a computer:
+	* Subscription (The billing account) → Resource Group (A folder holding related items) → Resource (An individual VM or database).
+	* Rule of Thumb: Inherited access flows downhill. If you are a Reader at the Subscription level, you are automatically a Reader for everything inside it.
+
+Azure RBAC supports several scopes:
+
+```text id="w8qkkn"
+Management Group
+       │
+       ▼
+Subscription
+       │
+       ▼
+Resource Group
+       │
+       ▼
+Resource
+```
+
+For example:
+
+```text id="q7t9s2"
+Rajiv
+  │
+  ▼
+Contributor
+  │
+  ▼
+Resource Group: Production
+```
+
+Rajiv can manage resources within that scope according to the role's permissions.
 
 ---
 # 2. RBAC Architecture
@@ -171,53 +219,7 @@ Useful for:
 | Owner       |    ✅ |                    ✅ |             ✅ |
 
 ---
-# 8. Three Core Concepts of RBAC
-simple formula: Who + What + Where = Access.
-```sh
-[ Who? ]                   [ What? ]                 [ Where? ]
-Security Principal    +   Role Definition    +           Scope           = Access Granted
- (e.g., Jane the         (e.g., "Reader" -          (e.g., Only inside
-    Student)              can view things)         "Lab-Resource-Group")
-```
-1. Security Principal (The "Who"): An identity requesting access. This can be a single User, a Group of people, or an application (Service Principal). 
-2. Role Definition (The "What"): A collection of permissions. Azure has thousands of built-in roles, but beginners only need to know the big three:
-	* 👀 Reader: Can look, but cannot touch or change anything.
-	* 🛠️ Contributor: Can create, edit, or delete resources, but cannot grant access to others.
-	* 👑 Owner: Has full control, including the power to grant or revoke access for others. 
-3. Scope (The "Where"): The boundary where the access applies. Azure organizes resources like folders on a computer:
-	* Subscription (The billing account) → Resource Group (A folder holding related items) → Resource (An individual VM or database).
-	* Rule of Thumb: Inherited access flows downhill. If you are a Reader at the Subscription level, you are automatically a Reader for everything inside it.
 
-Azure RBAC supports several scopes:
-
-```text id="w8qkkn"
-Management Group
-       │
-       ▼
-Subscription
-       │
-       ▼
-Resource Group
-       │
-       ▼
-Resource
-```
-
-For example:
-
-```text id="q7t9s2"
-Rajiv
-  │
-  ▼
-Contributor
-  │
-  ▼
-Resource Group: Production
-```
-
-Rajiv can manage resources within that scope according to the role's permissions.
-
----
 # For creating VM, we need to give this permission 
 
 ```sh
