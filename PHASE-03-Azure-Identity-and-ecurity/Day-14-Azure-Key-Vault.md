@@ -3,7 +3,13 @@
 This video will cover the following topics:
  * Key vault Architecture
  * What is Azure Key Vault?
- * 
+ * What are Secrets?
+ * What are Keys?
+ * What are Certificates?
+ * Why Not Store Secrets in Code?
+ * Key Vault Security
+ * Managed Identity + Key Vault
+ * HANDS-ON DEMO
 
 ## Architecture:
 
