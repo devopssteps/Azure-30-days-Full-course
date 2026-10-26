@@ -222,10 +222,358 @@ Azure Key Vault
    ▼
 Demo Secret
 ```
-
 The VM retrieves the secret without having a Key Vault password or access key stored inside it.
 
 ---
 
+# Step 1 — Create Key Vault
+
+Azure Portal:
+
+```text
+Azure Portal
+    ↓
+Key Vaults
+    ↓
+Create
+```
+
+Example:
+
+```text
+Key Vault Name:
+
+azure-demo-kv-XXXX
+```
+
+Choose:
+
+* Subscription
+* Resource Group
+* Region
+* Appropriate pricing tier
+
+For this demo, we use the simplest configuration.
+
+---
+
+# Step 2 — Configure Access Model
+
+During creation, use the **Azure role-based access control (RBAC)** authorization model.
+
+```text
+Key Vault
+    │
+    ▼
+Access Control (IAM)
+    │
+    ▼
+Azure RBAC
+```
+
+---
+# Step 3 — Create a Secret
+
+Open:
+
+```text
+Key Vault
+   ↓
+Objects
+   ↓
+Secrets
+   ↓
+Generate/Import
+```
+
+Create:
+
+```text
+Name:
+
+DemoPassword
+```
+
+Value:
+
+```text
+DemoPassword-123!
+```
+
+---
+
+# Step 4 — Create/Use Your Azure VM
+
+We Use the VM from our previous Managed Identity demo.
+
+Open:
+
+```text
+VM
+ ↓
+Identity
+ ↓
+System Assigned
+ ↓
+Status: On
+```
+
+If it's OFF:
+
+```text
+Status → ON
+Save
+```
+
+---
+
+# Step 5 — Give VM Permission to Read Secrets
+
+Go to:
+
+```text
+Key Vault
+    ↓
+Access Control (IAM)
+    ↓
+Add Role Assignment
+```
+
+Select:
+
+**Key Vault Secrets User**
+
+Then:
+
+```text
+Assign access to:
+Managed identity
+
+Select:
+Virtual Machine
+
+Your VM
+```
+
+Then:
+
+**Review + Assign**
+
+---
+# Step 6 — SSH Into VM
+
+```bash
+ssh azureuser@<VM-PUBLIC-IP>
+```
+
+> "Notice that we haven't copied the Key Vault secret or a Key Vault password into this VM."
+
+---
+
+# Step 7 — Install Azure CLI
+
+If necessary:
+
+```bash
+curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
+```
+
+Verify:
+
+```bash
+az --version
+```
+
+---
+# Step 8 — Authenticate Using Managed Identity
+
+Run:
+
+```bash
+az login --identity
+```
+
+The VM authenticates using its Managed Identity.
+
+No username/password is required for the Azure CLI login.
+
+---
+# Step 9 — Retrieve the Secret
+
+Run:
+
+```bash
+az keyvault secret show \
+  --vault-name <KEY-VAULT-NAME> \
+  --name DemoPassword \
+  --query value \
+  --output tsv
+```
+
+We should see:
+
+```text
+DemoPassword-123!
+```
+
+**This is the main moment of this demo.**
+
+Immediately show:
+
+```text
+VM
+ │
+ │ Managed Identity
+ ▼
+Microsoft Entra ID
+ │
+ │ RBAC
+ ▼
+Azure Key Vault
+ │
+ ▼
+DemoPassword
+```
+
+> **"আমরা VM-এর মধ্যে কোনো Key Vault password বা access key রাখিনি। VM তার Managed Identity ব্যবহার করে Key Vault থেকে Secret retrieve করেছে।"**
+
+---
+# 🔥 Step 10 — Prove RBAC Is Working
+
+Remove the:
+
+**Key Vault Secrets User**
+
+role assignment.
+
+Then run:
+
+```bash
+az keyvault secret show \
+  --vault-name <KEY-VAULT-NAME> \
+  --name DemoPassword \
+  --query value \
+  --output tsv
+```
+
+The request should fail because the VM no longer has the required permission.
+
+Now add:
+
+**Key Vault Secrets User**
+
+again.
+
+Run the command.
+
+It should work again.
+
+now we will see:
+
+```text
+Permission Removed
+       ↓
+Access Denied ❌
+
+Permission Added
+       ↓
+Secret Retrieved ✅
+```
+
+This demonstrates the complete relationship between:
+
+**Managed Identity + Microsoft Entra ID + RBAC + Key Vault**
+
+---
+# 🧠 Authentication vs Authorization
+
+```text
+VM
+ │
+ ▼
+Managed Identity
+ │
+ ▼
+Microsoft Entra ID
+ │
+ │
+ │ Authentication
+ ▼
+"Who are you?"
+ │
+ ▼
+RBAC
+ │
+ │ Authorization
+ ▼
+"What can you access?"
+ │
+ ▼
+Key Vault Secret
+```
+
+---
+# Azure CLI Commands
+
+List Key Vaults:
+
+```bash
+az keyvault list --output table
+```
+
+List secrets:
+
+```bash
+az keyvault secret list \
+  --vault-name <KEY-VAULT-NAME> \
+  --output table
+```
+
+Retrieve secret:
+
+```bash
+az keyvault secret show \
+  --vault-name <KEY-VAULT-NAME> \
+  --name DemoPassword
+```
+
+```bash
+--query value --output tsv
+```
+
+so the output clearly shows the secret value.
+
+---
+
+# 🏗️ Final Architecture of this demo
+
+```text
+                    Azure VM
+                       │
+                       │
+               System-Assigned
+               Managed Identity
+                       │
+                       ▼
+               Microsoft Entra ID
+                       │
+                       │ Authentication
+                       ▼
+                  Azure RBAC
+                       │
+              Key Vault Secrets User
+                       │
+                       ▼
+                 Azure Key Vault
+                       │
+             ┌─────────┼─────────┐
+             ▼         ▼         ▼
+          Secrets     Keys    Certificates
+             │
+             ▼
+       Database Password
+```
+
+---
 
 
