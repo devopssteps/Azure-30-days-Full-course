@@ -241,7 +241,343 @@ Useful for:
                     "Microsoft.Resources/subscriptions/resourceGroups/delete"
                 ]
 ```
+---
+# 🧪 HANDS-ON DEMO
 
+Create three test users in your Microsoft Entra tenant:
+
+```text id="q9q0cz"
+User 1 → Azure-Reader
+User 2 → Azure-Contributor
+User 3 → Azure-Owner
+```
+
+---
+
+# Step 1 — Create a Resource Group
+
+Go to:
+
+```text id="2z0n1g"
+Azure Portal
+    ↓
+Resource Groups
+    ↓
+Create
+```
+
+Example:
+
+```text id="6j2jml"
+Name:
+
+azure-rbac-demo-rg
+```
+
+Create it.
+
+---
+
+# Step 2 — Create Three Users
+
+Go to:
+
+```text id="o7c2b4"
+Microsoft Entra ID
+       ↓
+Users
+       ↓
+New User
+```
+
+Create:
+
+```text id="pl2b3y"
+RBAC Reader
+RBAC Contributor
+RBAC Owner
+```
+
+---
+
+# Step 3 — Assign Reader
+
+Open:
+
+```text id="g0xx0w"
+Resource Group
+    ↓
+Access control (IAM)
+    ↓
+Add
+    ↓
+Add role assignment
+```
+
+Select:
+
+```text id="1a5k3e"
+Role:
+
+Reader
+```
+
+Select:
+
+```text id="3t5j8m"
+Member:
+
+RBAC Reader
+```
+
+Review + assign.
+
+---
+
+# Step 4 — Test Reader
+
+Sign in using the Reader test account.
+
+Try to:
+
+```text id="w8z4g6"
+View VM
+     ✅
+
+View Storage Account
+     ✅
+
+Create Resource
+     ❌
+
+Delete Resource
+     ❌
+```
+
+---
+
+# Step 5 — Assign Contributor
+
+Go back:
+
+```text id="u7b6gx"
+Resource Group
+    ↓
+Access Control (IAM)
+    ↓
+Add Role Assignment
+```
+
+Choose:
+
+```text id="5f0c8p"
+Contributor
+```
+
+Assign it to:
+
+```text id="2u4y6k"
+RBAC Contributor
+```
+
+---
+
+# Step 6 — Test Contributor
+
+Sign in as Contributor.
+
+```text id="0r6h6m"
+View Resource
+     ✅
+
+Create Resource
+     ✅
+
+Modify Resource
+     ✅
+
+Delete Resource
+     ✅*
+
+Assign RBAC Access
+     ❌
+```
+
+> **Permissions can vary depending on the specific resource/action and other role assignments.**
+
+
+---
+
+# Step 7 — Assign Owner
+
+Assign:
+
+```text id="r6c0p5"
+Role:
+Owner
+```
+
+to:
+
+```text id="d3x4j1"
+RBAC Owner
+```
+
+Scope:
+
+```text
+azure-rbac-demo-rg
+```
+
+---
+
+# Step 8 — Test Owner
+
+Show:
+
+```text id="v8e0m4"
+View
+ ✅
+
+Create
+ ✅
+
+Modify
+ ✅
+
+Delete
+ ✅
+
+Manage Access
+ ✅
+```
+
+Now can **visually understand** the difference between the three roles.
+
+---
+
+### Now we get idea of this 3 role 
+
+```text id="a3y4cw"
+                 RBAC
+                  │
+       ┌──────────┼──────────┐
+       ▼          ▼          ▼
+     Reader   Contributor   Owner
+       │          │          │
+      View       Manage    Manage
+       │          │          │
+       │          │          └── Access
+       │          │
+       │          └── Resources
+       │
+       └── View
+```
+
+> **"RBAC শুধু role নয়—Role + Scope + User/Group মিলে একটি Role Assignment তৈরি করে।"**
+
+
+---
+
+# 🧪 Azure CLI Demo
+
+List role assignments:
+
+```bash id="m3k9q2"
+az role assignment list \
+  --resource-group azure-rbac-demo-rg \
+  --output table
+```
+
+Assign Reader:
+
+```bash id="3t7yq1"
+az role assignment create \
+  --assignee <USER-OBJECT-ID> \
+  --role "Reader" \
+  --resource-group azure-rbac-demo-rg
+```
+
+Assign Contributor:
+
+```bash id="9m1x4b"
+az role assignment create \
+  --assignee <USER-OBJECT-ID> \
+  --role "Contributor" \
+  --resource-group azure-rbac-demo-rg
+```
+
+List assignments:
+
+```bash id="2r5f8n"
+az role assignment list \
+  --resource-group azure-rbac-demo-rg \
+  --output table
+```
+
+For production environments, prefer assigning roles to **groups** rather than managing large numbers of individual user assignments.
+
+---
+
+# 🔐 Security Best Practices
+
+### Principle of Least Privilege
+
+Give users **only the permissions they need**.
+
+Bad:
+
+```text
+Developer → Owner
+```
+
+Better:
+
+```text
+Developer → Contributor
+```
+
+Or even better:
+
+```text
+Developer
+   ↓
+Specific Role
+   ↓
+Specific Resource Group
+```
+
+* Avoid unnecessary Owner assignments.
+* Use groups where practical.
+* Review role assignments regularly.
+* Use the narrowest practical scope.
+
+---
+
+# 🏗️ Final Architecture
+
+```text id="m9yqk5"
+             Microsoft Entra ID
+                     │
+        ┌────────────┼────────────┐
+        ▼            ▼            ▼
+      User 1       User 2       User 3
+        │            │            │
+      Reader     Contributor     Owner
+        │            │            │
+        └────────────┼────────────┘
+                     ▼
+               Role Assignment
+                     │
+                     ▼
+              Resource Group
+                     │
+             ┌───────┼───────┐
+             ▼       ▼       ▼
+            VM    Storage    VNet
+```
+
+---
 
 
 
