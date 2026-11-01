@@ -21,7 +21,7 @@ GitHub → Azure App Service → Automatic Deployment → Live Website
 ## 1️⃣ Start With the Application
 We will use our previous website
 
-## # 2️⃣ Push Application to GitHub
+## 2️⃣ Push Application to GitHub
 
 Create a GitHub repository:
 
