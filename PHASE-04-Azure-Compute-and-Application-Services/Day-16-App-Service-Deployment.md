@@ -122,10 +122,9 @@ Live Application
 ```
 
 Refresh the browser.
-
 🎉 The updated application should appear.
 ---
-> **"এখন লক্ষ্য করুন, আমরা Azure Portal-এ গিয়ে manually কোনো file upload করিনি। শুধু GitHub-এ code push করেছি এবং configured deployment process-এর মাধ্যমে Azure App Service নতুন version deploy করেছে।"**
+> **"আমরা Azure Portal-এ গিয়ে manually কোনো file upload করিনি। শুধু GitHub-এ code push করেছি এবং configured deployment process-এর মাধ্যমে Azure App Service নতুন version deploy করেছে।"**
 
 ---
 ## Hands-on Demo : Understand scaling in App Service
