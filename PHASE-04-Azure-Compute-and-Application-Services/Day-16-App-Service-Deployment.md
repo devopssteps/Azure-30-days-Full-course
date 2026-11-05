@@ -51,8 +51,6 @@ GitHub
 
 ## 3️⃣ GitHub → Azure App Service
 
-This should be the **main demo**.
-
 Go to:
 
 ```text
