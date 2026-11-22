@@ -195,8 +195,293 @@ Click Review + Create.
 4. VS Code extension: **Azure Functions**
 5. VS Code extension: **Azure Resources** (optional, useful for viewing resources)
 
+### Connect Azure with vs code
+In VS Code:
 
+1. Open Extensions.
+2. Search `Azure Functions`.
+3. Install the Microsoft extension.
+4. Sign in to Azure using the Azure icon.
 
+## **8. Create your Python Function project**
+
+In VS Code:
+
+1. Press `Ctrl + Shift + P`.
+2. Search for `Azure Functions: Create New Project`.
+3. Select a folder.
+4. Select Python.
+5. Select Python 3.11.
+6. Select **Model V2**.
+7. Select **Blob trigger**.
+8. Function name: `FileUploadTrigger`.
+9. Trigger path: `uploads/{name}`.
+10. Select the Storage account.
+
+VS Code will generate the Python Function project.
+
+## **9. Write the Python code**
+Open `function_app.py` in VS Code and replace its contents with the following code.
+```sh
+import azure.functions as func
+import logging
+import os
+import json
+import mimetypes
+
+from datetime import datetime, timezone
+from pathlib import PurePosixPath
+from azure.storage.blob import BlobServiceClient
+from azure.core.exceptions import ResourceExistsError
+
+app = func.FunctionApp()
+
+@app.blob_trigger(
+    arg_name="myblob",
+    path="uploads/{name}",
+    connection="SOURCE_STORAGE_CONNECTION"
+)
+def FileUploadTrigger(myblob: func.InputStream):
+
+    logging.info("Azure Blob Trigger started!")
+
+    # Get uploaded file information
+    source_blob_name = myblob.name
+    file_name = PurePosixPath(source_blob_name).name
+    file_size = myblob.length
+
+    # Detect file extension and MIME type
+    file_extension = PurePosixPath(file_name).suffix.lower()
+
+    content_type, _ = mimetypes.guess_type(file_name)
+
+    if content_type is None:
+        content_type = "application/octet-stream"
+
+    # Create metadata JSON
+    metadata = {
+        "file_name": file_name,
+        "file_extension": file_extension,
+        "file_type": content_type,
+        "file_size_bytes": file_size,
+        "file_size_kb": round(file_size / 1024, 2),
+        "source_blob": source_blob_name,
+        "processed_at": datetime.now(timezone.utc).isoformat()
+    }
+
+    # Connect to destination Storage Account
+    destination_connection = os.environ[
+        "DEST_STORAGE_CONNECTION"
+    ]
+
+    blob_service_client = BlobServiceClient.from_connection_string(
+        destination_connection
+    )
+
+    # Get destination container
+    container_client = blob_service_client.get_container_client(
+        "file-metadata"
+    )
+
+    # Create container if it does not exist
+    try:
+        container_client.create_container()
+    except ResourceExistsError:
+        pass
+
+    # Generate JSON filename
+    metadata_file_name = (
+        source_blob_name.replace("/", "_") + ".metadata.json"
+    )
+
+    # Upload JSON metadata to destination storage
+    destination_blob = container_client.get_blob_client(
+        metadata_file_name
+    )
+
+    destination_blob.upload_blob(
+        json.dumps(metadata, indent=4),
+        overwrite=True,
+        content_type="application/json"
+    )
+
+    logging.info(
+        f"Metadata uploaded successfully: {metadata_file_name}"
+    )
+
+    logging.info(f"File name: {file_name}")
+    logging.info(f"File type: {content_type}")
+    logging.info(f"File size: {file_size} bytes")
+```
+
+### **Understand the important code**
+
+| Code                     | What it does                                       |
+| ------------------------ | -------------------------------------------------- |
+| `@app.blob_trigger`      | Automatically triggers when a blob is detected.    |
+| `path="uploads/{name}"`  | Monitors the uploads container.                    |
+| `myblob.name`            | Gets the uploaded blob's name.                     |
+| `myblob.length`          | Gets its size in bytes.                            |
+| `mimetypes.guess_type()` | Determines the likely MIME type from its filename. |
+| `BlobServiceClient`      | Connects to Azure Blob Storage.                    |
+| `upload_blob()`          | Uploads the generated JSON file.                   |
+
+## **10. Install the required Python packages**
+
+Create or update `requirements.txt`:
+
+```
+azure-functions
+azure-storage-blob
+```
+We need to this file our project 
+## **11. Configure the storage connections**
+
+Your project should have these files:
+
+**AzureFunctionDemo/**
+
+&#x20;function_app.py
+
+&#x20;host.json
+
+&#x20;requirements.txt
+
+&#x20;local.settings.json
+
+Local secrets
+
+Create or update `host.json`:
+
+```
+
+{
+  "version": "2.0"
+}
+
+```
+
+Create OR update `local.settings.json`:
+
+```
+
+{
+  "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "<DESTINATION_STORAGE_CONNECTION_STRING>",
+    "AzureWebJobsSecretStorageType": "Files",
+    "FUNCTIONS_WORKER_RUNTIME": "python",
+    "SOURCE_STORAGE_CONNECTION": "<SOURCE_STORAGE_CONNECTION_STRING>",
+    "DEST_STORAGE_CONNECTION": "<DESTINATION_STORAGE_CONNECTION_STRING>"
+  }
+}
+
+```
+
+Replace the placeholders with the actual connection strings you copied in Step 5.
+
+## **12. Test the Function locally first then we do run in Azure**
+Open the VS Code terminal and run:
+
+```sh
+source .venv/bin/activate
+python -m pip install --upgrade pip
+python -m pip install azure-functions azure-storage-blob
+python -m pip show azure-functions
+python -m pip show azure-storage-blob
+python -c "from azure.storage.blob import BlobServiceClient; from azure.core.exceptions import ResourceExistsError; print('Azure packages installed successfully')"
+vi local.settings.json 
+pip install -r requirements.txt
+source .venv/bin/activate
+func start --verbose
+```
+## **13. Deploy your Python Function to Azure**
+
+Now let's deploy the code to your actual Azure Function App.
+
+1. Open VS Code.
+2. Click the Azure icon on the left.
+3. Sign in to your Azure account.
+4. Find the Workspace section.
+5. Right-click your Function project.
+6. Select **Deploy to Function App**.
+7. Select your subscription.
+8. Select `func-devops-fileprocessor`.
+9. Confirm deployment.
+
+Wait until deployment completes.
+
+### **Configure application settings in Azure**
+
+This is important. Your local settings are not automatically published as production settings.
+
+Open your Function App in Azure Portal:
+
+1. Go to **Settings → Environment variables** (or Configuration, depending on portal layout).
+2. Open App settings.
+3. Add the following settings:
+
+| Name                        | Value                                    |
+| --------------------------- | ---------------------------------------- |
+| `SOURCE_STORAGE_CONNECTION` | First Storage Account connection string  |
+| `DEST_STORAGE_CONNECTION`   | Second Storage Account connection string |
+| `AzureWebJobsStorage`       | Second Storage Account connection string |
+
+4. Check that `FUNCTIONS_WORKER_RUNTIME` is set to `python`.
+5. Save the settings.
+
+## **14. Final hands-on test: Upload a file**
+
+The exciting part of your video
+
+Now demonstrate the complete workflow to your viewers.
+
+### **Step 1 — Open source Storage Account**
+
+Go to:
+
+`stdevopsupload01 → Containers → uploads`
+
+Click **Upload**.
+
+Upload a sample file, for example:
+
+- `AWS-Tutorial.pdf`
+- `myphoto.jpg`
+- `test.txt`
+
+### **Step 2 — Show the Function execution**
+
+Open:
+
+`func-devops-fileprocessor → Functions → FileUploadTrigger`
+
+Select **Monitor** or open **Log stream**.
+
+You should see logs 
+
+### **Step 3 — Open destination Storage Account**
+
+Go to:
+
+`stdevopsprocess01 → Containers → file-metadata`
+`uploads_AWS-Tutorial.pdf.metadata.json`
+
+Click the JSON file and download it or view its contents.
+
+Expected result:
+
+```
+{
+    "file_name": "AWS-Tutorial.pdf",
+    "file_extension": ".pdf",
+    "file_type": "application/pdf",
+    "file_size_bytes": 204800,
+    "file_size_kb": 200.0,
+    "source_blob": "uploads/AWS-Tutorial.pdf",
+    "processed_at": "2026-11-17T..."
+}
+```
 
 
 
