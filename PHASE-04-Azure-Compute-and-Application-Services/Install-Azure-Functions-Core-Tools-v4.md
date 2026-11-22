@@ -1,10 +1,6 @@
 # **1. Install Azure Functions Core Tools v4 in WSL (Ubuntu)**
 
-Recommended for your Windows + WSL setup
-
 ## **Step 1 — Open Ubuntu in WSL**
-
-Open your Ubuntu terminal from Windows Terminal or VS Code.
 
 Check your Ubuntu version:
 
@@ -17,8 +13,6 @@ Check your Linux architecture:
 ```
 uname -m
 ```
-
-For the Microsoft APT instructions below, the expected architecture is `x86_64` (AMD64).
 
 Update Ubuntu:
 
@@ -73,14 +67,6 @@ Install:
 ```
 sudo apt install azure-functions-core-tools-4
 ```
-
-Installation complete
-
-These commands follow Microsoft's documented Ubuntu installation method.&#x20;
-
-Microsoft Learn+1
-
-
 
 ## **Step 5 — Verify installation**
 
