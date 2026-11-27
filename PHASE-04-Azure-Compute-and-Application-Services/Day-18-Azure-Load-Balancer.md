@@ -1,4 +1,4 @@
-# Day-18-Azure Load 
+# Day-18-Azure Load Balancer
 
 # 1. What is Load Balancing?
 
